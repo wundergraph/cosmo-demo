@@ -1,0 +1,15 @@
+type User @key(fields: "id") {
+  id: ID!
+  name: String!
+}
+
+type Post @key(fields: "id") {
+  id: ID!
+  authorId: ID! @external
+  author: User! @requires(fields: "authorId")
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+}

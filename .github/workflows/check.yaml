@@ -1,0 +1,32 @@
+name: Check Subgraphs
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-subgraphs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+
+      - name: Install Cosmo CLI
+        run: |
+          npm install -g wgc@latest
+
+      - name: Run subgraph checks
+        run: |
+          wgc subgraph check posts --schema ./subgraph-posts/schema.graphql
+          wgc subgraph check users --schema ./subgraph-users/schema.graphql
+        env:
+          COSMO_API_KEY: ${{ secrets.COSMO_API_KEY }}

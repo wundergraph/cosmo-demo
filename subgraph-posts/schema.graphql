@@ -1,0 +1,10 @@
+type Post @key(fields: "id") {
+  id: ID!
+  content: String
+  authorId: ID!
+}
+
+type Query {
+  posts: [Post!]!
+  post(id: ID!): Post
+}
