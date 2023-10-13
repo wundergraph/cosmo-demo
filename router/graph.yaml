@@ -1,0 +1,10 @@
+version: 1
+subgraphs:
+  - name: posts
+    routing_url: http://localhost:4001/graphql
+    schema:
+      file: ../subgraph-posts/schema.graphql
+  - name: users
+    routing_url: http://localhost:4002/graphql
+    schema:
+      file: ../subgraph-users/schema.graphql
