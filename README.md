@@ -12,11 +12,11 @@ You can run each subgraph as shown below
 Posts runs on http://localhost:4001 and users runs on http://localhost:4002
 
 ```bash
-cd subgraph-posts && npm run dev
+cd subgraph-posts && npm i && npm run dev
 ```
 
 ```bash
-cd subgraph-users && npm run dev
+cd subgraph-users && npm i && npm run dev
 ```
 
 ## Running Router Locally
@@ -39,6 +39,7 @@ wgc router compose --input graph.yaml --out config.json
 
 ```bash
 docker run \
+    --rm -it \
     --platform=linux/amd64 \
     --name cosmo-router \
     --env-file .env.local \
