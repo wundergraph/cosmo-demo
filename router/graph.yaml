@@ -1,10 +1,13 @@
+# This configuration expects subgraphs to be running on host
+# running the router as a Docker container. When running the
+# router on localhost, use graph.localhost.yaml instead.
 version: 1
 subgraphs:
   - name: posts
-    routing_url: http://localhost:4001/graphql
+    routing_url: http://host.docker.internal:4001/graphql
     schema:
       file: ../subgraph-posts/schema.graphql
   - name: users
-    routing_url: http://localhost:4002/graphql
+    routing_url: http://host.docker.internal:4002/graphql
     schema:
       file: ../subgraph-users/schema.graphql
